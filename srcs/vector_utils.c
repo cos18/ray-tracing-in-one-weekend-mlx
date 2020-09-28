@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   vector_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 14:06:38 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 16:18:53 by sunpark          ###   ########.fr       */
+/*   Created: 2020/09/28 15:15:13 by sunpark           #+#    #+#             */
+/*   Updated: 2020/09/28 16:16:52 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int		create_trgb(int t, t_vec *color)
+double	vec_length_squared(t_vec *a)
 {
-	return (t << 24 | (int)(color->x) << 16 | (int)(color->y) << 8 | (int)(color->z));
+	return (pow(a->x, 2) + pow(a->y, 2) + pow(a->z, 2));
 }
 
-int		get_t(int trgb)
+double	vec_length(t_vec *a)
 {
-	return (trgb & (0xFF << 24));
+	return sqrt(vec_length_squared(a));
 }
 
-t_vec	*get_color(int trgb)
+double	vec_dot(t_vec *a, t_vec *b)
+{
+	return (a->x * b->x + a->y * b->y + a->z * b->z);
+}
+
+t_vec	*vec_cross(t_vec *a, t_vec *b)
 {
 	t_vec	*result;
 
 	result = (t_vec*)malloc(sizeof(t_vec));
-	result->x = trgb & (0xFF << 16);
-	result->y = trgb & (0xFF << 8);
-	result->z = trgb & 0xFF;
+	result->x = a->y * b->z - a->z * b->y;
+	result->y = a->z * b->x - a->x * b->z;
+	result->z = a->x * b->y - a->y * b->x;
 	return (result);
+}
+
+t_vec	*vec_unit(t_vec *a)
+{
+	return (vec_div_const(a, vec_length(a)));
 }

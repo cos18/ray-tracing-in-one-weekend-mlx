@@ -6,11 +6,11 @@
 #    By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/09/28 14:32:18 by sunpark          ###   ########.fr        #
+#    Updated: 2020/09/28 15:56:04 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		= main.c color.c draw_basic.c mlx_tools.c
+SRC		= main.c color.c draw_basic.c mlx_utils.c vector_calc.c vector_utils.c
 CSRC	= ch2.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/

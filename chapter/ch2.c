@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:24:03 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 14:28:36 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/09/28 16:22:53 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	show_gradation()
 	t_data	*img;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 256, 256, "miniRT");
+	vars.win = mlx_new_window(vars.mlx, 256, 256, "Gradation");
 	img = (t_data *)malloc(sizeof(t_data));
 	img->img = mlx_new_image(vars.mlx, 256, 256);
 	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel), \

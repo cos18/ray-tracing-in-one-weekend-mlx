@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:09:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 14:26:56 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/09/28 16:18:12 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void			draw_gradaition(t_data *data, int width, int height)
 {
 	int		trgb;
+	t_vec	*color;
 	double	x;
 	double	y;
 
@@ -25,9 +26,11 @@ void			draw_gradaition(t_data *data, int width, int height)
 		x = 0;
 		while (x < width)
 		{
-			trgb = create_trgb(0, x / width * 256, y / height * 256, 64);
+			color = vec_create(x / width * 256, y / height * 256, 64);
+			trgb = create_trgb(0, color);
 			my_mlx_pixel_put(data, x, y, trgb);
 			x++;
+			free(color);
 		}
 		y++;
 	}

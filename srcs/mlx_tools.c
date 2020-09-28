@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/11 21:12:06 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 14:50:02 by sunpark          ###   ########.fr       */
+/*   Created: 2020/09/28 14:13:02 by sunpark           #+#    #+#             */
+/*   Updated: 2020/09/28 14:28:30 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "chapter.h"
 
-int	main(int argv, char** argc)
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	int		chapter;
+	char	*dst;
 
-	if (argv < 2 || argv > 3)
-		return ft_printf("Wrong argc\n");
-	chapter = atoi(argc[1]);
-	if (chapter == 2)
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+int				mlx_key_handle(int keycode, t_vars *vars)
+{
+	ft_printf("keycode : %d\n", keycode);
+	if (keycode == 53)
 	{
-		show_gradation();
-		return (0);
+		mlx_destroy_window(vars->mlx, vars->win);
+		exit(0);
 	}
-	ft_printf("Wrong argc\n");
+	return (0);
 }

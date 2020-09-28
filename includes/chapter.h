@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   chapter.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/11 21:12:06 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 14:50:02 by sunpark          ###   ########.fr       */
+/*   Created: 2020/09/28 14:24:52 by sunpark           #+#    #+#             */
+/*   Updated: 2020/09/28 14:25:19 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "chapter.h"
+#ifndef CHAPTER_H
+# define CHAPTER_H
 
-int	main(int argv, char** argc)
-{
-	int		chapter;
+void	show_gradation();
 
-	if (argv < 2 || argv > 3)
-		return ft_printf("Wrong argc\n");
-	chapter = atoi(argc[1]);
-	if (chapter == 2)
-	{
-		show_gradation();
-		return (0);
-	}
-	ft_printf("Wrong argc\n");
-}
+#endif

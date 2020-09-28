@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_basic.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/11 21:12:06 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 14:50:02 by sunpark          ###   ########.fr       */
+/*   Created: 2020/09/28 14:09:02 by sunpark           #+#    #+#             */
+/*   Updated: 2020/09/28 14:26:56 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "chapter.h"
 
-int	main(int argv, char** argc)
+void			draw_gradaition(t_data *data, int width, int height)
 {
-	int		chapter;
+	int		trgb;
+	double	x;
+	double	y;
 
-	if (argv < 2 || argv > 3)
-		return ft_printf("Wrong argc\n");
-	chapter = atoi(argc[1]);
-	if (chapter == 2)
+	ft_printf("Start drawing!\n");
+	y = 0;
+	while (y < height)
 	{
-		show_gradation();
-		return (0);
+		x = 0;
+		while (x < width)
+		{
+			trgb = create_trgb(0, x / width * 256, y / height * 256, 64);
+			my_mlx_pixel_put(data, x, y, trgb);
+			x++;
+		}
+		y++;
 	}
-	ft_printf("Wrong argc\n");
+	ft_printf("Done!\n");
 }

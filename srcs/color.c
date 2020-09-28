@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/11 21:12:06 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 14:50:02 by sunpark          ###   ########.fr       */
+/*   Created: 2020/09/28 14:06:38 by sunpark           #+#    #+#             */
+/*   Updated: 2020/09/28 14:08:32 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "chapter.h"
-
-int	main(int argv, char** argc)
+int	create_trgb(int t, int r, int g, int b)
 {
-	int		chapter;
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
-	if (argv < 2 || argv > 3)
-		return ft_printf("Wrong argc\n");
-	chapter = atoi(argc[1]);
-	if (chapter == 2)
-	{
-		show_gradation();
-		return (0);
-	}
-	ft_printf("Wrong argc\n");
+int	get_t(int trgb)
+{
+	return (trgb & (0xFF << 24));
+}
+
+int	get_r(int trgb)
+{
+	return (trgb & (0xFF << 16));
+}
+
+int	get_g(int trgb)
+{
+	return (trgb & (0xFF << 8));
+}
+
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
 }

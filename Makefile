@@ -6,14 +6,18 @@
 #    By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/09/28 13:05:05 by sunpark          ###   ########.fr        #
+#    Updated: 2020/09/28 14:32:18 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		= main.c
+SRC		= main.c color.c draw_basic.c mlx_tools.c
+CSRC	= ch2.c
 SRCDIR	= ./srcs/
+CSRCDIR	= ./chapter/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
+CSRCS	= $(addprefix $(CSRCDIR), $(CSRC))
 OBJS	= $(SRCS:.c=.o)
+COBJS	= $(CSRCS:.c=.o)
 
 INCDIR	= ./includes/
 LIBDIR	= ./libft/
@@ -30,8 +34,8 @@ RM		= rm -f
 .c.o:
 			$(GCC) $(GCCFLAG) -I$(INCDIR) -c $< -o $(<:.c=.o)
 
-$(NAME):	$(LIBNAME) $(MLXNAME) $(OBJS)
-			$(GCC) $(GCCFLAG) -I$(INCDIR) -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJS) $(LIBNAME) $(MLXNAME)
+$(NAME):	$(LIBNAME) $(MLXNAME) $(OBJS) $(COBJS)
+			$(GCC) $(GCCFLAG) -I$(INCDIR) -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJS) $(COBJS) $(LIBNAME) $(MLXNAME)
 
 $(LIBNAME):
 			@$(MAKE) -C $(LIBDIR) bonus
@@ -44,7 +48,7 @@ $(MLXNAME):
 all:		$(NAME)
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) $(COBJS)
 
 fclean:		clean
 			$(RM) $(NAME) $(LIBNAME) $(MLXNAME)

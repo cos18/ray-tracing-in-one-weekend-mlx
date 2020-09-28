@@ -17,5 +17,12 @@ Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ra
 
 ```bash
 $ make
-$ ./one_week
+$ ./one_week 2
 ```
+
+### Usage
+
+`./one_week (chapter) (--save)`
+
+- chapter : **Required.** Chapter number that execute (2 ~ 13)
+- --save : Optional. Save Image in bmp format. When this flag is off, it's running through Minilibx.

@@ -19,7 +19,7 @@ double	vec_length_squared(t_vec *a)
 
 double	vec_length(t_vec *a)
 {
-	return sqrt(vec_length_squared(a));
+	return (sqrt(vec_length_squared(a)));
 }
 
 double	vec_dot(t_vec *a, t_vec *b)

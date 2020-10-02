@@ -14,7 +14,8 @@
 
 int		create_trgb(int t, t_vec *color)
 {
-	return (t << 24 | (int)(color->x) << 16 | (int)(color->y) << 8 | (int)(color->z));
+	return (t << 24 | (int)(color->x) << 16 |
+		(int)(color->y) << 8 | (int)(color->z));
 }
 
 int		get_t(int trgb)

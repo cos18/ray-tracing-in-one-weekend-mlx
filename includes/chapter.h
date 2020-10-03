@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   chapter.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:24:52 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 14:25:19 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/03 15:36:41 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHAPTER_H
 # define CHAPTER_H
 
-void	show_gradation();
+void	show_gradation(int is_save);
 
 #endif

@@ -3,29 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ch2.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:24:03 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 16:22:53 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/03 16:21:25 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	show_gradation()
+void	show_gradation(int is_save)
 {
-	t_vars	vars;
-	t_data	*img;
+	t_img_data	*img;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 256, 256, "Gradation");
-	img = (t_data *)malloc(sizeof(t_data));
-	img->img = mlx_new_image(vars.mlx, 256, 256);
-	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel), \
-					&(img->line_length), &(img->endian));
-	draw_gradaition(img, 256, 256);
-	mlx_put_image_to_window(vars.mlx, vars.win, img->img, 0, 0);
-	mlx_hook(vars.win, 2, 1L << 0, mlx_key_handle, &vars);
-	mlx_loop(vars.mlx);
-	free(img);
+	img = create_img_data(256, 256);
+	draw_gradaition(img);
+	if (is_save)
+		return save_bmp(img, "ch2.rt");
+	mlx_show(img);
+	free_img_data(img);
 }

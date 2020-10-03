@@ -27,12 +27,12 @@ $ ./one_week 2
 - chapter : **Required.** Chapter number that execute (2 ~ 13)
 - --save : Optional. Save Image in bmp format. When this flag is off, it's running through Minilibx.
 
-> 😢 --save option is now in develop. When this option is enable, I will add comments in here(README) & commit!
+> 🎉 --save option work well!
 
 ### Progress
 
 - [x] 2. Output an Image
-- [x] 3. The vec3 Class
+- [x] 3. The vec3 Class (Same implementation with ch2)
 - [ ] 4. Rays, a Simple Camera, and Background
 - [ ] 5. Adding a Sphere
 - [ ] 6. Surface Normals and Multiple Objects

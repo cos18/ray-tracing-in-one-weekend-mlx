@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:09:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/03 16:18:48 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/04 21:32:13 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void		draw_gradaition(t_img_data *data)
 	double	x;
 	double	y;
 
-	ft_printf("Start drawing!\n");
 	y = -1;
 	while ((++y) < data->height)
 	{
@@ -32,7 +31,6 @@ void		draw_gradaition(t_img_data *data)
 			free(color);
 		}
 	}
-	ft_printf("Done!\n");
 }
 
 void		draw_vertical_line(t_img_data *data, int x)
@@ -41,7 +39,6 @@ void		draw_vertical_line(t_img_data *data, int x)
 	t_vec	*color;
 	int		y;
 
-	ft_printf("Start drawing!\n");
 	y = -1;
 	while ((++y) < data->height)
 	{
@@ -50,7 +47,6 @@ void		draw_vertical_line(t_img_data *data, int x)
 		data->img[x][y] = trgb;
 		free(color);
 	}
-	ft_printf("Done!\n");
 }
 
 void		draw_horizontal_line(t_img_data *data, int y)
@@ -59,7 +55,6 @@ void		draw_horizontal_line(t_img_data *data, int y)
 	t_vec	*color;
 	int		x;
 
-	ft_printf("Start drawing!\n");
 	x = -1;
 	while ((++x) < data->height)
 	{
@@ -68,5 +63,4 @@ void		draw_horizontal_line(t_img_data *data, int y)
 		data->img[x][y] = trgb;
 		free(color);
 	}
-	ft_printf("Done!\n");
 }

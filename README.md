@@ -1,6 +1,10 @@
 <h1 align="center">☀ Ray Tracing in One Weekend</h1>
 <h4 align="center">Implement in Minilibx, C library in 42</h4>
 
+<br>
+
+<p align="center"><image src="./sample/ch2.bmp"></p>
+
 Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) by Peter Shirley using Minilibx, simple C library that manage GUI in macOS.
 
 <br>
@@ -27,7 +31,7 @@ $ ./one_week 2
 - chapter : **Required.** Chapter number that execute (2 ~ 13)
 - --save : Optional. Save Image in bmp format. When this flag is off, it's running through Minilibx.
 
-> 🎉 --save option work well!
+> 🎉 --save option work well! Sample bmp files are in [sample folder](./sample).
 
 ### Progress
 

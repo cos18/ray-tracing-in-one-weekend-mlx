@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:13:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/03 12:31:27 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/04 21:59:10 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int				mlx_key_handle(int keycode, t_vars *vars)
 	return (0);
 }
 
-void			mlx_show(t_img_data *data)
+void			mlx_show(t_img_data *data, char *title)
 {
 	t_vars		vars;
 	t_mlx_data	*img;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, data->width, data->height, "Gradation");
+	vars.win = mlx_new_window(vars.mlx, data->width, data->height, title);
 	img = (t_mlx_data *)malloc(sizeof(t_mlx_data));
 	img->img = mlx_new_image(vars.mlx, 256, 256);
 	img->addr = mlx_get_data_addr(img->img, &(img->bits_per_pixel), \

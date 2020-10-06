@@ -6,12 +6,12 @@
 #    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/03 15:40:49 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/04 22:36:52 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC		= main.c color.c draw_basic.c mlx_utils.c vector_calc.c vector_utils.c \
-			img_data_utils.c save_bmp.c
+SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
+			struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c
 CSRC	= ch2.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
@@ -49,7 +49,7 @@ $(MLXNAME):
 all:		$(NAME)
 
 clean:
-			$(RM) $(OBJS) $(COBJS)
+			$(RM) $(OBJS) $(COBJS) *.bmp
 
 fclean:		clean
 			$(RM) $(NAME) $(LIBNAME) $(MLXNAME)

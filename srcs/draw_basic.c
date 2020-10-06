@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:09:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/04 21:32:13 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/04 22:38:03 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,9 @@ void		draw_horizontal_line(t_img_data *data, int y)
 		data->img[x][y] = trgb;
 		free(color);
 	}
+}
+
+void		draw_sky(t_img_data *data)
+{
+	return;
 }

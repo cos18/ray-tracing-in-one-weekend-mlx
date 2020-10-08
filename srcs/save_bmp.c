@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   save_bmp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 14:18:55 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/03 16:28:55 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/08 19:33:25 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void		raw_fill_header(t_img_data *data, char **raw_bmp, unsigned int img_size)
+void		raw_fill_header(t_img_data *data,
+								char **raw_bmp, unsigned int img_size)
 {
 	*(unsigned short *)*raw_bmp = *(const unsigned int *)(unsigned long)"BM";
 	*(unsigned int *)(*raw_bmp + 2) = (img_size + BMP_HEADER_SIZE);
@@ -39,8 +40,8 @@ void		raw_fill_data(t_img_data *data, char *raw_bmp)
 	int		locate;
 
 	locate = BMP_HEADER_SIZE + 1;
-	h = data->height;
-	while ((--h) >= 0)
+	h = -1;
+	while ((++h) < data->height)
 	{
 		w = -1;
 		while ((++w) < data->width)
@@ -67,7 +68,7 @@ char		*get_bmp_filename(char *filename)
 	return (result);
 }
 
-void		save_bmp(t_img_data *data, char	*filename)
+void		save_bmp(t_img_data *data, char *filename)
 {
 	char	*bmp_filename;
 	char	*raw_bmp;

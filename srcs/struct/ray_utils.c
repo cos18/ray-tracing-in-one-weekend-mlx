@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 22:07:33 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/04 22:14:47 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/08 16:11:45 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ t_vec		*ray_at(t_ray *ray, double t)
 	return (result);
 }
 
-void		ray_free(t_ray	*ray)
+void		ray_free(t_ray *ray, int is_orig_free)
 {
-	free(ray->orig);
+	if (is_orig_free)
+		free(ray->orig);
 	free(ray->dir);
 	free(ray);
 }

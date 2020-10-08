@@ -3,16 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/04 22:36:52 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/08 16:06:43 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
-			struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c
-CSRC	= ch2.c
+			object/sky.c \
+			struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c \
+			struct/vector_apply.c
+CSRC	= ch2.c ch4.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
@@ -29,7 +31,7 @@ MLXNAME	= libmlx.dylib
 NAME	= one_week
 
 GCC		= gcc
-GCCFLAG	= -Wall -Wextra -Werror
+GCCFLAG	= -Wall -Wextra -Werror -g
 RM		= rm -f
 
 .c.o:

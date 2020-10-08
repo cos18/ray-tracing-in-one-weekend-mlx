@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_basic.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:09:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/04 22:38:03 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/08 14:46:43 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void		draw_gradaition(t_img_data *data)
 		x = -1;
 		while ((++x) < data->width)
 		{
-			color = vec_create(x / data->width * 256.0, y / data->height * 256.0, 64);
+			color = vec_create(x / data->width, y / data->height, 1.0 / 4.0);
+			vec_mul_const_apply(color, 256.0);
 			trgb = create_trgb(0, color);
 			data->img[(int)x][(int)y] = trgb;
 			free(color);
@@ -63,9 +64,4 @@ void		draw_horizontal_line(t_img_data *data, int y)
 		data->img[x][y] = trgb;
 		free(color);
 	}
-}
-
-void		draw_sky(t_img_data *data)
-{
-	return;
 }

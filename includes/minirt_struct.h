@@ -3,15 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_struct.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 21:48:41 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/04 22:36:18 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/08 17:46:23 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_STRUCTURE_H
 # define MINIRT_STRUCTURE_H
+
+typedef struct	s_vars {
+	void		*mlx;
+	void		*win;
+}				t_vars;
+
+typedef struct	s_mlx_data {
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_mlx_data;
+
+typedef struct	s_img_data {
+	int			**img;
+	int			width;
+	int			height;
+}				t_img_data;
 
 typedef struct	s_vec {
 	double		x;
@@ -31,6 +50,12 @@ double			vec_dot(t_vec *a, t_vec *b);
 t_vec			*vec_cross(t_vec *a, t_vec *b);
 t_vec			*vec_unit(t_vec *a);
 
+t_vec			*vec_add_apply(t_vec *a, t_vec *b);
+t_vec			*vec_sub_apply(t_vec *a, t_vec *b);
+t_vec			*vec_mul_const_apply(t_vec *a, double c);
+t_vec			*vec_div_const_apply(t_vec *a, double c);
+void			vec_print(t_vec *a);
+
 typedef struct	s_ray {
 	t_vec		*orig;
 	t_vec		*dir;
@@ -38,6 +63,14 @@ typedef struct	s_ray {
 
 t_ray			*ray_create(t_vec *origin, t_vec *direction);
 t_vec			*ray_at(t_ray *ray, double t);
-void			ray_free(t_ray	*ray);
+void			ray_free(t_ray *ray, int is_orig_free);
+
+typedef struct	s_sky
+{
+	t_img_data	*data;
+	t_vec		*horizontal;
+	t_vec		*vertical;
+	t_vec		*lower_left_corner;
+}				t_sky;
 
 #endif

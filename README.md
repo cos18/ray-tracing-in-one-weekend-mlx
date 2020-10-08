@@ -3,7 +3,7 @@
 
 <br>
 
-<p align="center"><image src="./sample/ch2.bmp"></p>
+<p align="center"><image src="./sample/ch4.bmp"></p>
 
 Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) by Peter Shirley using Minilibx, simple C library that manage GUI in macOS.
 
@@ -37,7 +37,7 @@ $ ./one_week 2
 
 - [x] 2. Output an Image
 - [x] 3. The vec3 Class (Same implementation with ch2)
-- [ ] 4. Rays, a Simple Camera, and Background
+- [x] 4. Rays, a Simple Camera, and Background
 - [ ] 5. Adding a Sphere
 - [ ] 6. Surface Normals and Multiple Objects
 - [ ] 7. Antialiasing

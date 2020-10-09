@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_bmp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 14:18:55 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/08 19:33:25 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 21:21:15 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void		raw_fill_header(t_img_data *data,
 								char **raw_bmp, unsigned int img_size)
 {
-	*(unsigned short *)*raw_bmp = *(const unsigned int *)(unsigned long)"BM";
+	**raw_bmp = 'B';
+	*(*raw_bmp + 1) = 'M';
 	*(unsigned int *)(*raw_bmp + 2) = (img_size + BMP_HEADER_SIZE);
 	*(unsigned int *)(*raw_bmp + 6) = 0u;
 	*(unsigned char *)(*raw_bmp + 10) = BMP_HEADER_SIZE;

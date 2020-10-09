@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 14:34:23 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 15:52:23 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 20:07:23 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ t_vec	*vec_div_const_apply(t_vec *a, double c)
 	a->y /= c;
 	a->z /= c;
 	return (a);
+}
+
+t_vec	*vec_unit_apply(t_vec *a)
+{
+	return (vec_div_const_apply(a, vec_length(a)));
 }
 
 // Need to delete this function before final submit

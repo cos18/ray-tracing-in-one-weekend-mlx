@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:06 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 16:51:18 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 20:15:38 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	main(int argv, char **argc)
 	else if (chapter == 4)
 		show_sky(argv - 2);
 	else if (chapter == 5)
-		show_sphere(argv - 2);
+		show_s_sphere(argv - 2);
+	else if (chapter == 6)
+		show_normal_sphere(argv - 2);
 	else
 		ft_printf("Wrong argc\n");
 }

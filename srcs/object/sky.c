@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 15:35:13 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 16:54:03 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 20:03:14 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_sky			*init_sky(t_sky_info *info, t_vec *origin)
 	t_vec		*tmp3;
 
 	result = (t_sky *)malloc(sizeof(t_sky));
+	result->origin = origin;
 	result->horizontal = vec_create(info->viewport_width, 0, 0);
 	result->vertical = vec_create(0, info->viewport_height, 0);
 	vec_div_const_apply(result->horizontal, 2.0);
@@ -68,24 +69,24 @@ int				cal_sky_color(t_ray *r)
 	return (result);
 }
 
-void			free_sky(t_sky *my_sky)
+void			free_sky(t_sky *my_sky, int is_origin_free)
 {
 	free(my_sky->horizontal);
 	free(my_sky->vertical);
 	free(my_sky->lower_left_corner);
+	if (is_origin_free)
+		free(my_sky->origin);
 	free(my_sky);
 }
 
 void			draw_sky(t_img_data *data, t_sky_info *info)
 {
-	t_vec		*origin;
 	t_sky		*my_sky;
 	t_ray		*r;
 	int			x;
 	int			y;
 
-	origin = vec_create(0, 0, 0);
-	my_sky = init_sky(info, origin);
+	my_sky = init_sky(info, vec_create(0, 0, 0));
 	my_sky->data = data;
 	y = data->height;
 	while (--y >= 0)
@@ -93,11 +94,10 @@ void			draw_sky(t_img_data *data, t_sky_info *info)
 		x = -1;
 		while (++x < data->width)
 		{
-			r = cal_sky_ray(x, y, my_sky, origin);
+			r = cal_sky_ray(x, y, my_sky);
 			data->img[x][y] = cal_sky_color(r);
 			ray_free(r, FALSE);
 		}
 	}
-	free(origin);
-	free_sky(my_sky);
+	free_sky(my_sky, TRUE);
 }

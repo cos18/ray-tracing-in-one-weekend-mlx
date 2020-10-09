@@ -6,15 +6,15 @@
 #    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/09 16:51:47 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/09 21:23:04 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
-			object/sky.c object/sky_ray.c object/sphere.c\
-			struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c \
-			struct/vector_apply.c
-CSRC	= ch2.c ch4.c ch5.c
+		object/sky.c object/sky_ray.c object/sphere.c object/simple_sphere.c\
+		struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c \
+		struct/vector_apply.c
+CSRC	= ch2.c ch4.c ch5.c ch6.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
@@ -31,7 +31,7 @@ MLXNAME	= libmlx.dylib
 NAME	= one_week
 
 GCC		= gcc
-GCCFLAG	= -Wall -Wextra -Werror -g
+GCCFLAG	= -Wall -Wextra -Werror
 RM		= rm -f
 
 .c.o:

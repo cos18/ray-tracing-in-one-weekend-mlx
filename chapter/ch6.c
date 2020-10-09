@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ch5.c                                              :+:      :+:    :+:   */
+/*   ch6.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:23:30 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 20:03:20 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 20:13:14 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	show_s_sphere(int is_save)
+void	show_normal_sphere(int is_save)
 {
 	double		aspect_ratio;
 	t_img_data	*img;
@@ -24,11 +24,11 @@ void	show_s_sphere(int is_save)
 	info = init_sky_info(2.0 * aspect_ratio, 2.0, 1.0);
 	draw_sky(img, info);
 	s = init_sphere(vec_create(0, 0, -1), 0.5, vec_create(255, 0, 0));
-	draw_s_sphere(img, info, s);
+	draw_sphere(img, info, s);
 	if (is_save)
-		save_bmp(img, "ch5.rt");
+		save_bmp(img, "ch6.rt");
 	else
-		mlx_show(img, "Simple Sphere at Sky");
+		mlx_show(img, "Normal Vector Color Sphere");
 	free_sphere(s);
 	free(info);
 	free_img_data(img);

@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 21:48:41 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 15:52:07 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 20:07:59 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_vec			*vec_add_apply(t_vec *a, t_vec *b);
 t_vec			*vec_sub_apply(t_vec *a, t_vec *b);
 t_vec			*vec_mul_const_apply(t_vec *a, double c);
 t_vec			*vec_div_const_apply(t_vec *a, double c);
+t_vec			*vec_unit_apply(t_vec *a);
 void			vec_print(t_vec *a);
 
 typedef struct	s_ray {

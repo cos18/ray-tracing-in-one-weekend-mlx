@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sky_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/11 21:12:06 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 16:51:18 by sunpark          ###   ########.fr       */
+/*   Created: 2020/10/09 16:01:03 by sunpark           #+#    #+#             */
+/*   Updated: 2020/10/09 16:08:50 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "chapter.h"
 
-int	main(int argv, char **argc)
+t_ray		*cal_sky_ray(int x, int y, t_sky *my_sky, t_vec *origin)
 {
-	int	chapter;
+	t_ray	*r;
+	t_vec	*tmp;
+	t_vec	*tmp2;
 
-	if (argv < 2 || argv > 3 ||
-			(argv == 3 && (ft_strncmp(argc[2], "--save", 6) != 0)))
-		return (ft_printf("Wrong argc\n"));
-	chapter = atoi(argc[1]);
-	if (chapter == 2 || chapter == 3)
-		show_gradation(argv - 2);
-	else if (chapter == 4)
-		show_sky(argv - 2);
-	else if (chapter == 5)
-		show_sphere(argv - 2);
-	else
-		ft_printf("Wrong argc\n");
+	tmp = vec_mul_const(my_sky->horizontal,
+							(double)x / (my_sky->data->width - 1));
+	tmp2 = vec_mul_const(my_sky->vertical,
+							(double)y / (my_sky->data->height - 1));
+	vec_add_apply(tmp, tmp2);
+	free(tmp2);
+	vec_add_apply(tmp, my_sky->lower_left_corner);
+	r = ray_create(origin, vec_sub_apply(tmp, origin));
+	return (r);
 }

@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+         #
+#    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/08 16:06:43 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/09 16:51:47 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
-			object/sky.c \
+			object/sky.c object/sky_ray.c object/sphere.c\
 			struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c \
 			struct/vector_apply.c
-CSRC	= ch2.c ch4.c
+CSRC	= ch2.c ch4.c ch5.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))

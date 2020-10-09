@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chapter.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:24:52 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/08 19:32:18 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 16:50:56 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 void	show_gradation(int is_save);
 void	show_sky(int is_save);
+void	show_sphere(int is_save);
 
 #endif

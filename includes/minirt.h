@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:59 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/08 19:53:51 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/09 16:48:56 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,40 @@ void			draw_gradaition(t_img_data *data);
 void			draw_vertical_line(t_img_data *data, int x);
 void			draw_horizontal_line(t_img_data *data, int y);
 
-void			draw_sky(t_img_data *data, double viewport_width,
-							double viewport_height, double focal_length);
+typedef struct	s_sky_info
+{
+	double		viewport_width;
+	double		viewport_height;
+	double		focal_length;
+}				t_sky_info;
+
+
+typedef struct	s_sky
+{
+	t_img_data	*data;
+	t_vec		*horizontal;
+	t_vec		*vertical;
+	t_vec		*lower_left_corner;
+}				t_sky;
+
+t_sky_info		*init_sky_info(double viewport_width, double viewport_height,
+								double focal_length);
+t_sky			*init_sky(t_sky_info *info, t_vec *origin);
+int				cal_sky_color(t_ray *r);
+void			free_sky(t_sky *my_sky);
+void			draw_sky(t_img_data *data, t_sky_info *info);
+
+t_ray			*cal_sky_ray(int x, int y, t_sky *my_sky, t_vec *origin);
+
+typedef struct	s_sphere
+{
+	t_vec		*center;
+	double		radius;
+	t_vec		*color;
+}				t_sphere;
+
+t_sphere		*init_sphere(t_vec *center, double radius, t_vec *color);
+void			free_sphere(t_sphere *s);
+void			draw_sphere(t_img_data *data, t_sky_info *info, t_sphere *s);
 
 #endif

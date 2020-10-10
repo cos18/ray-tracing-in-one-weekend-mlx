@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt_const.h                                     :+:      :+:    :+:   */
+/*   hittable_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 16:11:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/10 16:23:31 by sunpark          ###   ########.fr       */
+/*   Created: 2020/10/10 16:29:29 by sunpark           #+#    #+#             */
+/*   Updated: 2020/10/10 16:35:20 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_CONST_H
-# define MINIRT_CONST_H
+#include "minirt.h"
 
-# define TRUE 1
-# define FALSE 0
+t_list	*hittable_new()
+{
+	t_list	*result;
 
-# define OBJ_SPHERE 1
+	result = (t_list *)malloc(sizeof(t_list));
+	result->content = NULL;
+	result->next = NULL;
+	return (result);
+}
 
-#endif
+void	hittable_add(t_list *lst, void *obj)
+{
+	if (lst->content == NULL)
+	{
+		
+	}
+}

@@ -6,14 +6,13 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:59 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 20:01:05 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/10 16:22:21 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "libft.h"
 # include "mlx.h"
 # include "minirt_struct.h"
 # include "minirt_const.h"
@@ -76,5 +75,14 @@ void			free_sphere(t_sphere *s);
 void			draw_sphere(t_img_data *data, t_sky_info *info, t_sphere *s);
 
 void			draw_s_sphere(t_img_data *data, t_sky_info *info, t_sphere *s);
+
+typedef struct	s_sphere_hit_info
+{
+	double		t_min;
+	double		t_max;
+	double		a;
+	double		half_b;
+	double		root_d;
+}				t_sphere_hit_info;
 
 #endif

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt_const.h                                     :+:      :+:    :+:   */
+/*   hit_record.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 16:11:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/10 16:23:31 by sunpark          ###   ########.fr       */
+/*   Created: 2020/10/10 15:57:03 by sunpark           #+#    #+#             */
+/*   Updated: 2020/10/10 16:05:05 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_CONST_H
-# define MINIRT_CONST_H
+#include "minirt.h"
 
-# define TRUE 1
-# define FALSE 0
-
-# define OBJ_SPHERE 1
-
-#endif
+void	hit_set_normal(t_hit_record *record, t_ray *r)
+{
+	record->is_front_face = (vec_dot(r->dir, record->normal) < 0) ?
+								TRUE : FALSE;
+	if (record->is_front_face == FALSE)
+		vec_mul_const_apply(record->normal, -1);
+}

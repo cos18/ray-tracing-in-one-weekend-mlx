@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt_const.h                                     :+:      :+:    :+:   */
+/*   hittable_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 16:11:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/10 16:23:31 by sunpark          ###   ########.fr       */
+/*   Created: 2020/10/10 16:35:38 by sunpark           #+#    #+#             */
+/*   Updated: 2020/10/10 16:54:50 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_CONST_H
-# define MINIRT_CONST_H
+#include "minirt.h"
 
-# define TRUE 1
-# define FALSE 0
-
-# define OBJ_SPHERE 1
-
-#endif
+t_hittable	*hittalbe_create(void *obj, int obj_name, )
+{
+	//*obj;
+	int			obj_num;
+	int			(*hit)(void *s, t_ray *r, void *info, t_hit_record *);
+}

@@ -6,13 +6,35 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 15:57:03 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/10 16:05:05 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/14 05:43:38 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	hit_set_normal(t_hit_record *record, t_ray *r)
+t_hit_record	*hit_record_new(void)
+{
+	t_hit_record	*result;
+
+	result = (t_hit_record *)malloc(sizeof(t_hit_record));
+	result->normal = NULL;
+	result->p = NULL;
+	return (result);
+}
+
+void			reset_hit_record(t_hit_record *rec)
+{
+	free(rec->normal);
+	free(rec->p);
+}
+
+void			free_hit_record(t_hit_record *rec)
+{
+	reset_hit_record(rec);
+	free(rec);
+}
+
+void			hit_set_normal(t_hit_record *record, t_ray *r)
 {
 	record->is_front_face = (vec_dot(r->dir, record->normal) < 0) ?
 								TRUE : FALSE;

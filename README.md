@@ -39,7 +39,7 @@ $ ./one_week 2
 - [x] 3. The vec3 Class (Same implementation with ch2)
 - [x] 4. Rays, a Simple Camera, and Background
 - [x] 5. Adding a Sphere
-- [ ] 6. Surface Normals and Multiple Objects
+- [x] 6. Surface Normals and Multiple Objects
 - [ ] 7. Antialiasing
 - [ ] 8. Diffuse Materials
 - [ ] 9. Metal

@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:59 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/10 16:22:21 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/14 05:33:39 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,9 @@ void			draw_sphere(t_img_data *data, t_sky_info *info, t_sphere *s);
 
 void			draw_s_sphere(t_img_data *data, t_sky_info *info, t_sphere *s);
 
-typedef struct	s_sphere_hit_info
-{
-	double		t_min;
-	double		t_max;
-	double		a;
-	double		half_b;
-	double		root_d;
-}				t_sphere_hit_info;
+int				sphere_hit(void *s, t_ray *r, t_hitlst_info *info,
+							t_hit_record *rec);
+
+void			draw_hittable(t_img_data *data, t_sky_info *info, t_list *lst);
 
 #endif

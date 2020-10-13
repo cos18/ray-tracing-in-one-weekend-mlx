@@ -6,14 +6,18 @@
 #    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/09 21:23:04 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/14 05:38:01 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
-		object/sky.c object/sky_ray.c object/sphere.c object/simple_sphere.c\
+		draw_hittable.c \
+		object/sky.c object/sky_ray.c object/sphere.c object/simple_sphere.c \
+		object/sphere_hit.c \
 		struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c \
-		struct/vector_apply.c
+		struct/vector_apply.c struct/hit_record.c struct/hittable_utils.c \
+		struct/hitlst_utils.c struct/hitlst_info_utils.c
+
 CSRC	= ch2.c ch4.c ch5.c ch6.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
@@ -34,8 +38,8 @@ GCC		= gcc
 GCCFLAG	= -Wall -Wextra -Werror
 RM		= rm -f
 
-.c.o:
-			$(GCC) $(GCCFLAG) -I$(INCDIR) -c $< -o $(<:.c=.o)
+%.o:		%.c
+			$(GCC) $(GCCFLAG) -I$(INCDIR) -c $< -o $@
 
 $(NAME):	$(LIBNAME) $(MLXNAME) $(OBJS) $(COBJS)
 			$(GCC) $(GCCFLAG) -I$(INCDIR) -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJS) $(COBJS) $(LIBNAME) $(MLXNAME)

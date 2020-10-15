@@ -3,7 +3,7 @@
 
 <br>
 
-<p align="center"><image src="./sample/ch6.bmp"></p>
+<p align="center"><image src="./sample/ch7.bmp"></p>
 
 Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) by Peter Shirley using Minilibx, simple C library that manage GUI in macOS.
 

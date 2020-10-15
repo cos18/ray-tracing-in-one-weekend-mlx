@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ch4.c                                              :+:      :+:    :+:   */
+/*   random_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/04 22:29:56 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 13:07:47 by sunpark          ###   ########.fr       */
+/*   Created: 2020/10/15 10:05:46 by sunpark           #+#    #+#             */
+/*   Updated: 2020/10/15 16:30:49 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
-void	show_sky(int is_save)
+double	random_double(void)
 {
-	double		aspect_ratio;
-	t_img_data	*img;
-	t_sky_info	*info;
+	return (rand() / (RAND_MAX + 1.0));
+}
 
-	aspect_ratio = 16.0 / 9.0;
-	img = create_img_data(400, (int)(400 / aspect_ratio));
-	info = init_sky_info(2.0 * aspect_ratio, 2.0, 1.0);
-	draw_sky(img, info);
-	if (is_save)
-		save_bmp(img, "ch4.rt");
-	else
-		mlx_show(img, "Sky");
-	free(info);
-	free_img_data(img);
+double	random_double_range(double min, double max)
+{
+	return (min + (max - min) * random_double());
 }

@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 14:34:23 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 20:07:23 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 10:43:59 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
 
 t_vec	*vec_add_apply(t_vec *a, t_vec *b)
 {
@@ -48,11 +47,4 @@ t_vec	*vec_div_const_apply(t_vec *a, double c)
 t_vec	*vec_unit_apply(t_vec *a)
 {
 	return (vec_div_const_apply(a, vec_length(a)));
-}
-
-// Need to delete this function before final submit
-
-void	vec_print(t_vec *a)
-{
-	printf("%lf %lf %lf\n", a->x, a->y, a->z);
 }

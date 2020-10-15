@@ -21,12 +21,12 @@ Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ra
 
 ```bash
 $ make
-$ ./one_week 2
+$ ./weekend 2
 ```
 
 ### Usage
 
-`./one_week (chapter) (--save)`
+`./weekend (chapter) (--save)`
 
 - chapter : **Required.** Chapter number that execute (2 ~ 13)
 - --save : Optional. Save Image in bmp format. When this flag is off, it's running through Minilibx.
@@ -40,7 +40,7 @@ $ ./one_week 2
 - [x] 4. Rays, a Simple Camera, and Background
 - [x] 5. Adding a Sphere
 - [x] 6. Surface Normals and Multiple Objects
-- [ ] 7. Antialiasing
+- [x] 7. Antialiasing
 - [ ] 8. Diffuse Materials
 - [ ] 9. Metal
 - [ ] 10. Dielectrics

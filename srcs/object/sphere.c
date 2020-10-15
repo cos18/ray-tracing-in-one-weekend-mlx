@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:33:55 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/10 15:53:50 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 16:44:58 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
 
 t_sphere		*init_sphere(t_vec *center, double radius, t_vec *color)
 {
@@ -56,18 +55,18 @@ int				cal_ray_color(t_ray *r, t_sphere *s, double t)
 	t_vec		*n;
 	t_vec		*c;
 	t_vec		*color;
-	int			trgb;
+	int			rgb;
 
 	at = ray_at(r, t);
 	n = vec_unit_apply(vec_sub(at, s->center));
 	c = vec_create(1, 1, 1);
-	color = vec_mul_const(vec_add_apply(n, c), 0.5 * 255.0);
-	trgb = create_trgb(0, color);
+	color = vec_mul_const(vec_add_apply(n, c), 0.5);
+	rgb = get_color_val(color);
 	free(at);
 	free(n);
 	free(c);
 	free(color);
-	return (trgb);
+	return (rgb);
 }
 
 void			draw_sphere(t_img_data *data, t_sky_info *info, t_sphere *s)

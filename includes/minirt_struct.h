@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 21:48:41 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/14 05:44:48 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 13:21:46 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,19 @@ t_list				*hitlst_new(void);
 void				hitlst_add(t_list *lst, void *obj, int obj_num);
 void				free_hitlst(t_list *lst);
 int					hitlst_hit(t_list *lst, t_hitlst_info *info);
+
+typedef struct		s_camera
+{
+	t_img_data		*data;
+	double			aspect_ratio;
+	t_vec			*origin;
+	t_vec			*lower_left_corner;
+	t_vec			*horizontal;
+	t_vec			*vertical;
+}					t_camera;
+
+t_camera			*camera_new(double aspect_ratio);
+t_ray				*camera_get_ray(t_camera *cam, double u, double v);
+void				free_camera(t_camera *cam);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:33:55 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 20:02:22 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 13:03:13 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			draw_s_sphere(t_img_data *data, t_sky_info *info, t_sphere *s)
 		{
 			r = cal_sky_ray(x, y, my_sky);
 			if (hit_s_sphere(s, r))
-				data->img[x][y] = create_trgb(0, s->color);
+				data->img[x][y] = get_color_val(s->color);
 			ray_free(r, FALSE);
 		}
 	}

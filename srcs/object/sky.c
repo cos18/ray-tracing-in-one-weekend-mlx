@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 15:35:13 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/09 20:03:14 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 16:44:53 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
 
 t_sky_info		*init_sky_info(double viewport_width, double viewport_height,
 								double focal_length)
@@ -62,9 +61,9 @@ int				cal_sky_color(t_ray *r)
 	free(tmp);
 	tmp = vec_mul_const_apply(vec_create(1, 1, 1), 1.0 - t);
 	tmp2 = vec_mul_const_apply(vec_create(0.5, 0.7, 1), t);
-	vec_mul_const_apply(vec_add_apply(tmp, tmp2), 255);
+	vec_add_apply(tmp, tmp2);
 	free(tmp2);
-	result = create_trgb(0, tmp);
+	result = get_color_val(tmp);
 	free(tmp);
 	return (result);
 }

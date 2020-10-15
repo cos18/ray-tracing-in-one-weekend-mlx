@@ -6,46 +6,59 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:55:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/14 06:03:15 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 15:37:15 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int					cal_hittable_color(t_vec *normal)
+int					cal_hittable_color(t_list *lst, t_hitlst_info *info)
 {
 	t_vec			*color;
+	t_vec			*tmp;
 	int				result;
+	double			t;
 
-	color = vec_add_apply(vec_create(1, 1, 1), normal);
-	vec_mul_const_apply(color, 0.5 * 255);
-	result = create_trgb(0, color);
+	if (hitlst_hit(lst, info))
+	{
+		color = vec_add_apply(vec_create(1, 1, 1), info->rec->normal);
+		vec_mul_const_apply(color, 0.5);
+	}
+	else
+	{
+		tmp = vec_unit(info->ray->dir);
+		t = 0.5 * (tmp->y + 1.0);
+		free(tmp);
+		color = vec_mul_const_apply(vec_create(1, 1, 1), 1.0 - t);
+		tmp = vec_mul_const_apply(vec_create(0.5, 0.7, 1), t);
+		vec_add_apply(color, tmp);
+		free(tmp);
+	}
+	result = get_color_val(color);
 	free(color);
 	return (result);
 }
 
-void				draw_hittable(t_img_data *data, t_sky_info *info,
-									t_list *lst)
+void				draw_hittable(t_camera *cam, t_list *lst)
 {
-	t_sky			*my_sky;
 	int				x;
 	int				y;
+	double			u;
+	double			v;
 	t_hitlst_info	*lst_info;
 
-	my_sky = init_sky(info, vec_create(0, 0, 0));
-	my_sky->data = data;
-	y = data->height;
+	y = cam->data->height;
 	while ((--y) >= 0)
 	{
 		x = -1;
-		while ((++x) < data->width)
+		while ((++x) < cam->data->width)
 		{
-			lst_info = hitlst_info_new(cal_sky_ray(x, y, my_sky), 0, INFINITY,
+			u = (double)x / (cam->data->width - 1);
+			v = (double)y / (cam->data->height - 1);
+			lst_info = hitlst_info_new(camera_get_ray(cam, u, v), 0, INFINITY,
 											hit_record_new());
-			if (hitlst_hit(lst, lst_info))
-				data->img[x][y] = cal_hittable_color(lst_info->rec->normal);
+			cam->data->img[x][y] = cal_hittable_color(lst, lst_info);
 			free_hitlst_info(lst_info);
 		}
 	}
-	free_sky(my_sky, TRUE);
 }

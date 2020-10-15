@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:59 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/14 05:33:39 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 13:38:51 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <math.h>
 
-int				create_trgb(int t, t_vec *color);
+int				get_color_val(t_vec *color);
 int				get_t(int trgb);
 t_vec			*get_color(int trgb);
 
@@ -32,6 +32,8 @@ void			mlx_show(t_img_data *data, char *title);
 
 # define BMP_HEADER_SIZE 122
 void			save_bmp(t_img_data *data, char	*filename);
+
+double			clamp(double x, double min, double max);
 
 void			draw_gradaition(t_img_data *data);
 void			draw_vertical_line(t_img_data *data, int x);
@@ -79,6 +81,6 @@ void			draw_s_sphere(t_img_data *data, t_sky_info *info, t_sphere *s);
 int				sphere_hit(void *s, t_ray *r, t_hitlst_info *info,
 							t_hit_record *rec);
 
-void			draw_hittable(t_img_data *data, t_sky_info *info, t_list *lst);
+void			draw_hittable(t_camera *cam, t_list *lst);
 
 #endif

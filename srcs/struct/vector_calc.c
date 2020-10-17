@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vector_calc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 15:28:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/09/28 16:29:45 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/17 15:43:51 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec	*vec_create(double x, double y, double z)
-{
-	t_vec	*result;
-
-	result = (t_vec*)malloc(sizeof(t_vec));
-	result->x = x;
-	result->y = y;
-	result->z = z;
-	return (result);
-}
-
-t_vec	*vec_add(t_vec *a, t_vec *b)
+t_vec		*vec_add(t_vec *a, t_vec *b)
 {
 	t_vec	*result;
 
@@ -34,7 +23,7 @@ t_vec	*vec_add(t_vec *a, t_vec *b)
 	return (result);
 }
 
-t_vec	*vec_sub(t_vec *a, t_vec *b)
+t_vec		*vec_sub(t_vec *a, t_vec *b)
 {
 	t_vec	*result;
 
@@ -45,7 +34,7 @@ t_vec	*vec_sub(t_vec *a, t_vec *b)
 	return (result);
 }
 
-t_vec	*vec_mul_const(t_vec *a, double c)
+t_vec		*vec_mul_const(t_vec *a, double c)
 {
 	t_vec	*result;
 
@@ -56,7 +45,7 @@ t_vec	*vec_mul_const(t_vec *a, double c)
 	return (result);
 }
 
-t_vec	*vec_div_const(t_vec *a, double c)
+t_vec		*vec_div_const(t_vec *a, double c)
 {
 	t_vec	*result;
 

@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 15:57:03 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/14 05:43:38 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/17 16:18:38 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ t_hit_record	*hit_record_new(void)
 
 void			reset_hit_record(t_hit_record *rec)
 {
-	free(rec->normal);
-	free(rec->p);
+	if (rec->normal)
+		free(rec->normal);
+	if (rec->p)
+		free(rec->p);
 }
 
 void			free_hit_record(t_hit_record *rec)

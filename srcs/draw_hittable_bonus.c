@@ -6,14 +6,26 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:55:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 16:36:09 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/17 15:33:59 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
 
+t_hitlst_info		*get_hitlst_by_locate(int x, int y, t_camera *cam)
+{
+	double			u;
+	double			v;
+	t_ray			*ray;
+
+	u = ((double)x + random_double()) / (cam->data->width - 1);
+	v = ((double)y + random_double()) / (cam->data->height - 1);
+	ray = camera_get_ray(cam, u, v);
+	return (hitlst_info_new(ray, 0.001, INFINITY, hit_record_new()));
+}
+
 void				get_hittable_color(t_list *lst, t_hitlst_info *info,
-											t_vec *color, int samples)
+											t_vec *color)
 {
 	t_vec			*cal_color;
 	t_vec			*tmp;
@@ -34,24 +46,12 @@ void				get_hittable_color(t_list *lst, t_hitlst_info *info,
 		vec_add_apply(cal_color, tmp);
 		free(tmp);
 	}
-	vec_div_const_apply(cal_color, samples);
+	vec_div_const_apply(cal_color, ANTI_SAMPLES);
 	vec_add_apply(color, cal_color);
 	free(cal_color);
 }
 
-t_hitlst_info		*get_hitlst_by_locate(int x, int y, t_camera *cam)
-{
-	double			u;
-	double			v;
-	t_ray			*ray;
-
-	u = ((double)x + random_double()) / (cam->data->width - 1);
-	v = ((double)y + random_double()) / (cam->data->height - 1);
-	ray = camera_get_ray(cam, u, v);
-	return (hitlst_info_new(ray, 0, INFINITY, hit_record_new()));
-}
-
-void				draw_hittable_anti(t_camera *cam, t_list *lst, int samples)
+void				draw_hittable_anti(t_camera *cam, t_list *lst)
 {
 	int				x;
 	int				y;
@@ -67,11 +67,11 @@ void				draw_hittable_anti(t_camera *cam, t_list *lst, int samples)
 		{
 			color = vec_create(0, 0, 0);
 			locate = -1;
-			while ((++locate) < samples)
+			while ((++locate) < ANTI_SAMPLES)
 			{
 				lst_info = get_hitlst_by_locate(x, y, cam);
-				get_hittable_color(lst, lst_info, color, samples);
-				free_hitlst_info(lst_info);
+				get_hittable_color(lst, lst_info, color);
+				free_hitlst_info(lst_info, FALSE);
 			}
 			cam->data->img[x][y] = get_color_val(color);
 			free(color);

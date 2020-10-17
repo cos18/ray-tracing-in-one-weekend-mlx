@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chapter.h                                          :+:      :+:    :+:   */
+/*   vector_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 14:24:52 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 21:29:41 by sunpark          ###   ########.fr       */
+/*   Created: 2020/10/17 15:40:57 by sunpark           #+#    #+#             */
+/*   Updated: 2020/10/17 15:42:36 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHAPTER_H
-# define CHAPTER_H
+#include "minirt.h"
 
-void	show_gradation(int is_save);
-void	show_sky(int is_save);
-void	show_s_sphere(int is_save);
-void	show_normal_sphere(int is_save);
-void	show_normal_sphere_anti(int is_save);
-void	show_normal_sphere_anti_dif(int is_save);
+t_vec		*vec_create(double x, double y, double z)
+{
+	t_vec	*result;
 
-#endif
+	result = (t_vec*)malloc(sizeof(t_vec));
+	result->x = x;
+	result->y = y;
+	result->z = z;
+	return (result);
+}
+
+t_vec		*vec_dup(t_vec *ori)
+{
+	return (vec_create(ori->x, ori->y, ori->z));
+}

@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:25:55 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/14 05:45:25 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 21:11:00 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_hitlst_info		*hitlst_info_new(t_ray *r, double t_min, double t_max,
 	return (result);
 }
 
-void				free_hitlst_info(t_hitlst_info *info)
+void				free_hitlst_info(t_hitlst_info *info, int is_ray_ori_free)
 {
-	ray_free(info->ray, FALSE);
+	ray_free(info->ray, is_ray_ori_free);
 	free_hit_record(info->rec);
 	free(info);
 }

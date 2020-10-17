@@ -6,7 +6,7 @@
 #    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/15 16:36:27 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/17 18:06:51 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,10 @@ SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
 		struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c \
 		struct/vector_apply.c struct/hit_record.c struct/hittable_utils.c \
 		struct/hitlst_utils.c struct/hitlst_info_utils.c struct/camera_utils.c \
-		draw_hittable_bonus.c random_bonus.c
+		struct/vector_create.c struct/vector_random_bonus.c \
+		draw_hittable_bonus.c random_bonus.c draw_hittable_diffuse_bonus.c
 
-CSRC	= ch2.c ch4.c ch5.c ch6.c ch7.c
+CSRC	= ch2.c ch4.c ch5.c ch6.c ch7.c ch8.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ch7.c                                              :+:      :+:    :+:   */
+/*   ch8.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:23:30 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 21:28:00 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/15 21:30:33 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
 
-void	show_normal_sphere_anti(int is_save)
+void	show_normal_sphere_anti_dif(int is_save)
 {
 	double		aspect_ratio;
 	t_img_data	*img;
@@ -30,12 +30,12 @@ void	show_normal_sphere_anti(int is_save)
 	s = init_sphere(vec_create(0, -100.5, -1), 100, vec_create(1, 0, 0));
 	hitlst_add(hitlst, (void *)s, OBJ_SPHERE);
 	ft_printf("Drawing start\n");
-	draw_hittable_anti(cam, hitlst);
+	draw_hittable_diffuse_anti(cam, hitlst);
 	ft_printf("Finish Drawing\n");
 	if (is_save)
-		save_bmp(img, "ch7.rt");
+		save_bmp(img, "ch8.rt");
 	else
-		mlx_show(img, "Antialiasing");
+		mlx_show(img, "Diffuse");
 	free_hitlst(hitlst);
 	free_camera(cam);
 	free_img_data(img);

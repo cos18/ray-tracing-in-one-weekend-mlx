@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 21:48:41 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 13:21:46 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/17 15:42:34 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct		s_vec
 }					t_vec;
 
 t_vec				*vec_create(double x, double y, double z);
+t_vec				*vec_dup(t_vec *ori);
+
 t_vec				*vec_add(t_vec *a, t_vec *b);
 t_vec				*vec_sub(t_vec *a, t_vec *b);
 t_vec				*vec_mul_const(t_vec *a, double c);
@@ -99,7 +101,7 @@ typedef struct		s_hitlst_info
 
 t_hitlst_info		*hitlst_info_new(t_ray *r, double t_min, double t_max,
 									t_hit_record *rec);
-void				free_hitlst_info(t_hitlst_info *info);
+void				free_hitlst_info(t_hitlst_info *info, int is_ray_ori_free);
 
 /*
 ** hit function -> (object *, t_ray *, info *, hit_record *)

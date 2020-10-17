@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunpark <sunpark@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 22:07:33 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/08 16:11:45 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/17 16:34:52 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ t_vec		*ray_at(t_ray *ray, double t)
 
 void		ray_free(t_ray *ray, int is_orig_free)
 {
-	if (is_orig_free)
+	if (ray == NULL)
+		return ;
+	if (is_orig_free && ray->orig != NULL)
 		free(ray->orig);
 	free(ray->dir);
 	free(ray);

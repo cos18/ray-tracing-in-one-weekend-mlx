@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chapter.h                                          :+:      :+:    :+:   */
+/*   minirt_material.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 14:24:52 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/18 21:24:43 by sunpark          ###   ########.fr       */
+/*   Created: 2020/10/18 21:08:27 by sunpark           #+#    #+#             */
+/*   Updated: 2020/10/19 15:46:29 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHAPTER_H
-# define CHAPTER_H
+#ifndef MINIRT_MATERIAL_H
+# define MINIRT_MATERIAL_H
 
-void	show_gradation(int is_save);
-void	show_sky(int is_save);
-void	show_s_sphere(int is_save);
-void	show_normal_sphere(int is_save);
-void	show_normal_sphere_anti(int is_save);
-void	show_normal_sphere_anti_dif(int is_save);
-void	show_sphere_material(int is_save);
+#include "minirt_struct.h"
+
+t_material	*mat_lambertian_new(t_vec *color);
+int			lambertian_scatter(t_material *mat, t_ray *ray_in,
+								t_hit_record *rec, t_material_info *info);
+t_material	*mat_metal_new(t_vec *color, double fuzz);
+int			metal_scatter(t_material *mat, t_ray *ray_in, t_hit_record *rec,
+						t_material_info *info);
+
 
 #endif

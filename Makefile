@@ -6,21 +6,23 @@
 #    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/17 18:06:51 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/18 22:05:10 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
-		draw_hittable.c cal_utils.c\
+		draw_hittable.c cal_utils.c draw_hittable_material_bonus.c \
 		object/sky.c object/sky_ray.c object/sphere.c object/simple_sphere.c \
 		object/sphere_hit.c \
 		struct/vector_calc.c struct/vector_utils.c struct/ray_utils.c \
 		struct/vector_apply.c struct/hit_record.c struct/hittable_utils.c \
 		struct/hitlst_utils.c struct/hitlst_info_utils.c struct/camera_utils.c \
 		struct/vector_create.c struct/vector_random_bonus.c \
-		draw_hittable_bonus.c random_bonus.c draw_hittable_diffuse_bonus.c
+		struct/vec_calc_extra.c struct/material_utils.c \
+		draw_hittable_bonus.c random_bonus.c draw_hittable_diffuse_bonus.c \
+		material/simple_material.c
 
-CSRC	= ch2.c ch4.c ch5.c ch6.c ch7.c ch8.c
+CSRC	= ch2.c ch4.c ch5.c ch6.c ch7.c ch8.c ch9.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))

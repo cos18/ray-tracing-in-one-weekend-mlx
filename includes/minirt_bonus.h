@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:42:18 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/17 16:55:30 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 21:02:51 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ t_hitlst_info	*get_hitlst_by_locate(int x, int y, t_camera *cam);
 void			draw_hittable_anti(t_camera *cam, t_list *lst);
 
 void			draw_hittable_diffuse_anti(t_camera *cam, t_list *lst);
+
+void			draw_hittable_material(t_camera *cam, t_list *lst);
 
 #endif

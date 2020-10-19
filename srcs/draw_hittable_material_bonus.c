@@ -1,48 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_hittable_diffuse_bonus.c                      :+:      :+:    :+:   */
+/*   draw_hittable_material_bonus.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:55:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/18 20:57:35 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/19 16:36:34 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
+#include <stdio.h>
 
-t_vec				*get_recursive_color(t_list *lst, t_hitlst_info **info,
-											int depth, int *is_free)
+t_vec				*get_sky_color_t(double t)
 {
 	t_vec			*target;
-	t_ray			*ray;
 	t_vec			*tmp;
+
+	tmp = vec_mul_const_apply(vec_create(0.5, 0.7, 1), t);
+	target = vec_mul_const_apply(vec_create(1, 1, 1), 1.0 - t);
+	vec_add_apply(target, tmp);
+	free(tmp);
+	return (target);
+}
+
+t_vec				*get_recur_mat_color(t_list *lst, t_hitlst_info **info,
+											int depth, int *is_free)
+{
+	t_material		*mat;
+	t_material_info	mat_info;
+	t_vec			*target;
 	double			t;
 
 	if (depth <= 0)
 		return (vec_create(0, 0, 0));
 	if (hitlst_hit(lst, *info))
 	{
-		target = vec_add_apply(vec_random_in_hemisphere((*info)->rec->normal),
-								(*info)->rec->p);
-		tmp = vec_dup((*info)->rec->p);
-		ray = ray_create(tmp, vec_sub_apply(target, (*info)->rec->p));
-		free_hitlst_info(*info, *is_free);
-		*is_free = TRUE;
-		*info = hitlst_info_new(ray);
-		return (vec_mul_const_apply(get_recursive_color(lst, info, depth - 1,
-															is_free), 0.5));
+		mat = (*info)->rec->mat;
+		if ((t = (*(mat->scatter))(mat, (*info)->ray, (*info)->rec, &mat_info)))
+		{
+			free_hitlst_info(*info, (*is_free)++);
+			*info = hitlst_info_new(mat_info.scattered);
+			target = vec_mul_each_apply(
+	get_recur_mat_color(lst, info, depth - 1, is_free), mat_info.attenuation);
+		}
+		else
+			target = vec_create(0, 0, 0);
+		free_material_info(&mat_info, FALSE, !t);
+		return (target);
 	}
 	t = 0.5 * ((vec_unit_apply((*info)->ray->dir))->y + 1.0);
-	target = vec_mul_const_apply(vec_create(1, 1, 1), 1.0 - t);
-	tmp = vec_mul_const_apply(vec_create(0.5, 0.7, 1), t);
-	vec_add_apply(target, tmp);
-	free(tmp);
-	return (target);
+	return (get_sky_color_t(t));
 }
 
-void				get_hittable_diffuse_color(t_list *lst,
+void				get_hittable_material_color(t_list *lst,
 												t_hitlst_info **info,
 												t_vec *color)
 {
@@ -50,13 +62,13 @@ void				get_hittable_diffuse_color(t_list *lst,
 	int				is_free;
 
 	is_free = FALSE;
-	target = get_recursive_color(lst, info, REFLECT_DEPTH, &is_free);
+	target = get_recur_mat_color(lst, info, REFLECT_DEPTH, &is_free);
 	vec_add_apply(color, target);
 	free(target);
 	free_hitlst_info(*info, is_free);
 }
 
-void				draw_hittable_diffuse_anti(t_camera *cam, t_list *lst)
+void				draw_hittable_material(t_camera *cam, t_list *lst)
 {
 	int				x;
 	int				y;
@@ -75,7 +87,7 @@ void				draw_hittable_diffuse_anti(t_camera *cam, t_list *lst)
 			while ((++locate) < ANTI_SAMPLES)
 			{
 				lst_info = get_hitlst_by_locate(x, y, cam);
-				get_hittable_diffuse_color(lst, &lst_info, color);
+				get_hittable_material_color(lst, &lst_info, color);
 			}
 			cam->data->img[x][y] = get_color_sample_gamma(color);
 			free(color);

@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 15:28:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/17 15:43:51 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 19:00:48 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,16 @@ t_vec		*vec_div_const(t_vec *a, double c)
 	result->x = a->x / c;
 	result->y = a->y / c;
 	result->z = a->z / c;
+	return (result);
+}
+
+t_vec		*vec_reflect(t_vec *v, t_vec *n)
+{
+	t_vec	*result;
+	t_vec	*tmp;
+
+	tmp = vec_mul_const(n, 2 * vec_dot(v, n));
+	result = vec_sub(v, tmp);
+	free(tmp);
 	return (result);
 }

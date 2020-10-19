@@ -3,7 +3,7 @@
 
 <br>
 
-<p align="center"><image src="./sample/ch8.bmp"></p>
+<p align="center"><image src="./sample/ch9.bmp"></p>
 
 Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) by Peter Shirley using Minilibx, simple C library that manage GUI in macOS.
 
@@ -42,7 +42,7 @@ $ ./weekend 2
 - [x] 6. Surface Normals and Multiple Objects
 - [x] 7. Antialiasing
 - [x] 8. Diffuse Materials
-- [ ] 9. Metal
+- [x] 9. Metal
 - [ ] 10. Dielectrics
 - [ ] 11. Positionable Camera
 - [ ] 12. Defocus Blur

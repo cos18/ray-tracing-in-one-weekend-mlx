@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:55:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/17 15:33:59 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 20:57:28 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_hitlst_info		*get_hitlst_by_locate(int x, int y, t_camera *cam)
 	u = ((double)x + random_double()) / (cam->data->width - 1);
 	v = ((double)y + random_double()) / (cam->data->height - 1);
 	ray = camera_get_ray(cam, u, v);
-	return (hitlst_info_new(ray, 0.001, INFINITY, hit_record_new()));
+	return (hitlst_info_new(ray));
 }
 
 void				get_hittable_color(t_list *lst, t_hitlst_info *info,

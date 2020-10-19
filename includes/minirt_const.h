@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 16:11:02 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/17 15:16:10 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 21:10:45 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 
 # define OBJ_SPHERE 1
 
+# define MAT_LAMBERTIAN 1
+# define MAT_METAL 2
+
+# define HIT_T_MIN 0.001
 # define ANTI_SAMPLES 50
 # define REFLECT_DEPTH 50
 

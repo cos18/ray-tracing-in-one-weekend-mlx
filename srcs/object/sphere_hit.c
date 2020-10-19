@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 14:49:41 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/14 05:44:06 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 19:10:04 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int			check_sphere_hitrange(void *s, t_ray *r,
 			rec->normal = vec_sub(rec->p, ((t_sphere *)s)->center);
 			vec_div_const_apply(rec->normal, ((t_sphere *)s)->radius);
 			hit_set_normal(rec, r);
+			rec->mat = info->mat;
 			return (TRUE);
 		}
 	}

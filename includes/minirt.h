@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:59 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 13:38:51 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 21:20:25 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "mlx.h"
 # include "minirt_struct.h"
+# include "minirt_material.h"
 # include "minirt_const.h"
 # include <stdlib.h>
 # include <math.h>
@@ -69,10 +70,9 @@ typedef struct	s_sphere
 {
 	t_vec		*center;
 	double		radius;
-	t_vec		*color;
 }				t_sphere;
 
-t_sphere		*init_sphere(t_vec *center, double radius, t_vec *color);
+t_sphere		*init_sphere(t_vec *center, double radius);
 void			free_sphere(t_sphere *s);
 void			draw_sphere(t_img_data *data, t_sky_info *info, t_sphere *s);
 

@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:23:30 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 21:28:00 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 21:19:58 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	show_normal_sphere_anti(int is_save)
 	cam = camera_new(aspect_ratio);
 	cam->data = img;
 	hitlst = hitlst_new();
-	s = init_sphere(vec_create(0, 0, -1), 0.5, vec_create(1, 0, 0));
+	s = init_sphere(vec_create(0, 0, -1), 0.5);
 	hitlst_add(hitlst, (void *)s, OBJ_SPHERE);
-	s = init_sphere(vec_create(0, -100.5, -1), 100, vec_create(1, 0, 0));
+	s = init_sphere(vec_create(0, -100.5, -1), 100);
 	hitlst_add(hitlst, (void *)s, OBJ_SPHERE);
 	ft_printf("Drawing start\n");
 	draw_hittable_anti(cam, hitlst);

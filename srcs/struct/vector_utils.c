@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 15:15:13 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 16:47:45 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/19 14:48:19 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
 
 double	vec_length_squared(t_vec *a)
 {
@@ -42,11 +41,4 @@ t_vec	*vec_cross(t_vec *a, t_vec *b)
 t_vec	*vec_unit(t_vec *a)
 {
 	return (vec_div_const(a, vec_length(a)));
-}
-
-// Need to delete this function before final submit
-
-void	vec_print(t_vec *a)
-{
-	printf("%lf %lf %lf\n", a->x, a->y, a->z);
 }

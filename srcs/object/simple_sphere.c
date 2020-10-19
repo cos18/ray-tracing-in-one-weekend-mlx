@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:33:55 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/15 13:03:13 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/18 21:44:34 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int				hit_s_sphere(t_sphere *s, t_ray *r)
 
 void			draw_s_sphere(t_img_data *data, t_sky_info *info, t_sphere *s)
 {
+	t_vec		*color;
 	t_sky		*my_sky;
 	t_ray		*r;
 	int			x;
@@ -38,6 +39,7 @@ void			draw_s_sphere(t_img_data *data, t_sky_info *info, t_sphere *s)
 
 	my_sky = init_sky(info, vec_create(0, 0, 0));
 	my_sky->data = data;
+	color = vec_create(1, 1, 0);
 	y = data->height;
 	while (--y >= 0)
 	{
@@ -46,9 +48,10 @@ void			draw_s_sphere(t_img_data *data, t_sky_info *info, t_sphere *s)
 		{
 			r = cal_sky_ray(x, y, my_sky);
 			if (hit_s_sphere(s, r))
-				data->img[x][y] = get_color_val(s->color);
+				data->img[x][y] = get_color_val(color);
 			ray_free(r, FALSE);
 		}
 	}
+	free(color);
 	free_sky(my_sky, TRUE);
 }

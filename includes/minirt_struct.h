@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 21:48:41 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/19 15:46:59 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/21 19:22:24 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_vec				*vec_div_const_apply(t_vec *a, double c);
 t_vec				*vec_unit_apply(t_vec *a);
 
 void				vec_print(t_vec *a);
+int					vec_is_parallel(t_vec *a, t_vec *b);
+t_vec				*vec_cross_apply(t_vec *a, t_vec *b);
 t_vec				*vec_cross_apply_tob(t_vec *a, t_vec *b);
 t_vec				*vec_mul_each(t_vec *a, t_vec *b);
 t_vec				*vec_mul_each_apply(t_vec *a, t_vec *b);
@@ -169,6 +171,8 @@ typedef struct		s_camera
 }					t_camera;
 
 t_camera			*camera_new(double aspect_ratio);
+t_camera			*camera_locate_new(t_vec *lookfrom, t_vec *lookat,
+									double aspect_ratio, double vfov);
 t_ray				*camera_get_ray(t_camera *cam, double u, double v);
 void				free_camera(t_camera *cam);
 

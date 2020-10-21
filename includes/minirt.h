@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:59 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/18 21:20:25 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/19 20:15:05 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void			mlx_show(t_img_data *data, char *title);
 void			save_bmp(t_img_data *data, char	*filename);
 
 double			clamp(double x, double min, double max);
+double			get_radian(double degree);
 
 void			draw_gradaition(t_img_data *data);
 void			draw_vertical_line(t_img_data *data, int x);

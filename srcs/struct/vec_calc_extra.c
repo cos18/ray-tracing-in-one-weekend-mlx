@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 20:29:30 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/19 16:35:56 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/21 19:18:23 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,29 @@
 void		vec_print(t_vec *a)
 {
 	printf("%lf %lf %lf\n", a->x, a->y, a->z);
+}
+
+int			vec_is_parallel(t_vec *a, t_vec *b)
+{
+	double	dot;
+	double	length;
+
+	dot = vec_dot(a, b);
+	dot = ((dot < 0) ? (-1 * dot) : dot);
+	length = vec_length(a) * vec_length(b);
+	return ((dot == length) ? TRUE : FALSE);
+}
+
+t_vec		*vec_cross_apply(t_vec *a, t_vec *b)
+{
+	t_vec	*result;
+
+	result = vec_cross(a, b);
+	a->x = result->x;
+	a->y = result->y;
+	a->z = result->z;
+	free(result);
+	return (a);
 }
 
 t_vec		*vec_cross_apply_tob(t_vec *a, t_vec *b)

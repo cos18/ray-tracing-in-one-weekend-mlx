@@ -3,7 +3,7 @@
 
 <br>
 
-<p align="center"><image src="./sample/ch9.bmp"></p>
+<p align="center"><image src="./sample/ch11.bmp"></p>
 
 Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) by Peter Shirley using Minilibx, simple C library that manage GUI in macOS.
 
@@ -14,6 +14,7 @@ Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ra
 - macOS 10.14+
 - clang 11.0+
 - Minilibx 20200219_beta (Already in project src!)
+> Minilibx is available on macOS and Linux, but there are only macOS ver. mlx in this project. So this project ONLY runs on macOS 😢
 
 <br>
 
@@ -36,7 +37,7 @@ $ ./weekend 2
 ### Progress
 
 - [x] 2. Output an Image
-- [x] 3. The vec3 Class (Same implementation with ch2)
+- [x] 3. The vec3 Class (Same result of  ch2)
 - [x] 4. Rays, a Simple Camera, and Background
 - [x] 5. Adding a Sphere
 - [x] 6. Surface Normals and Multiple Objects
@@ -44,6 +45,6 @@ $ ./weekend 2
 - [x] 8. Diffuse Materials
 - [x] 9. Metal
 - [ ] 10. Dielectrics
-- [ ] 11. Positionable Camera
+- [x] 11. Positionable Camera
 - [ ] 12. Defocus Blur
 - [ ] 13. Where Next?

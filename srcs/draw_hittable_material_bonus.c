@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:55:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/19 16:36:34 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/23 08:28:33 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
-#include <stdio.h>
 
 t_vec				*get_sky_color_t(double t)
 {
@@ -92,5 +91,6 @@ void				draw_hittable_material(t_camera *cam, t_list *lst)
 			cam->data->img[x][y] = get_color_sample_gamma(color);
 			free(color);
 		}
+		ft_printf("printing : %d / %d\n", cam->data->height - y, cam->data->height);
 	}
 }

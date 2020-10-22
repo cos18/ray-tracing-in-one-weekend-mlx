@@ -6,12 +6,11 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 20:31:29 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/19 16:33:21 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/23 08:28:26 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
-#include <stdio.h>
 
 t_material		*mat_lambertian_new(t_vec *color)
 {

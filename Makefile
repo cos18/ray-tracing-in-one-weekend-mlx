@@ -6,7 +6,7 @@
 #    By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 13:34:20 by sunpark           #+#    #+#              #
-#    Updated: 2020/10/21 20:54:57 by sunpark          ###   ########.fr        #
+#    Updated: 2020/10/22 22:29:17 by sunpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC		= main.c color.c draw_basic.c mlx_utils.c img_data_utils.c save_bmp.c \
 		draw_hittable_bonus.c random_bonus.c draw_hittable_diffuse_bonus.c \
 		material/simple_material.c
 
-CSRC	= ch2.c ch4.c ch5.c ch6.c ch7.c ch8.c ch9.c ch11.c
+CSRC	= ch2.c ch4.c ch5.c ch6.c ch7.c ch8.c ch9.c ch11.c ch13.c
 SRCDIR	= ./srcs/
 CSRCDIR	= ./chapter/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))

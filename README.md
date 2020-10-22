@@ -3,7 +3,7 @@
 
 <br>
 
-<p align="center"><image src="./sample/ch11.bmp"></p>
+<p align="center"><image src="./sample/ch13.bmp"></p>
 
 Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) by Peter Shirley using Minilibx, simple C library that manage GUI in macOS.
 
@@ -47,4 +47,6 @@ $ ./weekend 2
 - [ ] 10. Dielectrics
 - [x] 11. Positionable Camera
 - [ ] 12. Defocus Blur
-- [ ] 13. Where Next?
+- [x] 13. Where Next?
+
+> 🚨 Last Example (Chapter 13) renders 125 spheres and this example only runs at single thread, so it will take few hours to render.

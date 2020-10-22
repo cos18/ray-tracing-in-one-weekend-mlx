@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 21:12:06 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/21 21:07:34 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/22 22:29:09 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	main(int argv, char **argc)
 		show_sphere_material(argv - 2);
 	else if (chapter == 11)
 		show_sphere_camera(argv - 2);
+	else if (chapter == 13)
+		show_final(argv - 2);
 	else
 		ft_printf("Wrong argc\n");
 }

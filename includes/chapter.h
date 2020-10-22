@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:24:52 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/19 20:17:44 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/22 22:27:57 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	show_normal_sphere_anti(int is_save);
 void	show_normal_sphere_anti_dif(int is_save);
 void	show_sphere_material(int is_save);
 void	show_sphere_camera(int is_save);
+void	show_final(int is_save);
 
 #endif

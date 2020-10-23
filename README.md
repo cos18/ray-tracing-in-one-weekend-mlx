@@ -47,6 +47,6 @@ $ ./weekend 2
 - [ ] 10. Dielectrics
 - [x] 11. Positionable Camera
 - [ ] 12. Defocus Blur
-- [x] 13. Where Next?
+- [x] 13. Where Next? (Without Dielectrics and Defocus Blur)
 
-> 🚨 Last Example (Chapter 13) renders 125 spheres and this example only runs at single thread, so it will take few hours to render.
+> 🚨 Last Example (Chapter 13) renders 125 spheres, so it will take few hours to render. If you want fast rendering, fix `PTHREAD_CNT` (Numbers of threads to render), `ANTI_SAMPLES` (Samples of antializing) and `REFLECT_DEPTH` (calculate times of ray reflecting) in [`minirt_const.h`](./includes/minirt_const.h) to minimize rendering.

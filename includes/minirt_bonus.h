@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 12:42:18 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/18 21:02:51 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/23 13:30:02 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_BONUS_H
 
 # include "minirt.h"
+# include <pthread.h>
 
 double			random_double(void);
 double			random_double_range(double min, double max);
@@ -30,6 +31,14 @@ void			draw_hittable_anti(t_camera *cam, t_list *lst);
 
 void			draw_hittable_diffuse_anti(t_camera *cam, t_list *lst);
 
+t_vec			*get_sky_color_t(double t);
+t_vec			*get_recur_mat_color(t_list *lst, t_hitlst_info **info,
+											int depth, int *is_free);
+void			get_hittable_material_color(t_list *lst,
+											t_hitlst_info **info,
+											t_vec *color);
 void			draw_hittable_material(t_camera *cam, t_list *lst);
+
+void			draw_hittable_pthread(t_camera *cam, t_list *lst);
 
 #endif

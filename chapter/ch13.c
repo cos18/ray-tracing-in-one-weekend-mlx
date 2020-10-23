@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 15:23:30 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/23 08:28:05 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/23 13:42:40 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ t_list	*random_scene()
 
 void	show_final(int is_save)
 {
-	double		aspect_ratio;
-	t_img_data	*img;
-	t_camera	*cam;
-	t_list		*hitlst;
+	double			aspect_ratio;
+	t_img_data		*img;
+	t_camera		*cam;
+	t_list			*hitlst;
 
 	ft_printf("WARNING! This example takes about 2~3 hours to render.\n");
 	aspect_ratio = 3.0 / 2.0;
@@ -87,7 +87,7 @@ void	show_final(int is_save)
 	cam->data = img;
 	hitlst = random_scene();
 	ft_printf("Drawing start\n");
-	draw_hittable_material(cam, hitlst);
+	draw_hittable_pthread(cam, hitlst);
 	ft_printf("Finish Drawing\n");
 	if (is_save)
 		save_bmp(img, "ch13.rt");

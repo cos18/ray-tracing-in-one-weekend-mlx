@@ -3,7 +3,7 @@
 
 <br>
 
-<p align="center"><image src="./sample/ch13.bmp"></p>
+<p align="center"><image src="https://repository-images.githubusercontent.com/299168011/8b8c0e00-150a-11eb-99b3-731770f40e70"></p>
 
 Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html) by Peter Shirley using Minilibx, simple C library that manage GUI in macOS.
 
@@ -14,6 +14,8 @@ Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ra
 - macOS 10.14+
 - clang 11.0+
 - Minilibx 20200219_beta (Already in project src!)
+- [Norm 2.0.2](https://cdn.intra.42.fr/pdf/pdf/1608/norme.en.pdf) - C code standard in 42
+
 > Minilibx is available on macOS and Linux, but there are only macOS ver. mlx in this project. So this project ONLY runs on macOS 😢
 
 <br>
@@ -49,4 +51,6 @@ $ ./weekend 2
 - [ ] 12. Defocus Blur
 - [x] 13. Where Next? (Without Dielectrics and Defocus Blur)
 
-> 🚨 Last Example (Chapter 13) renders 125 spheres, so it will take few hours to render. If you want fast rendering, fix `PTHREAD_CNT` (Numbers of threads to render), `ANTI_SAMPLES` (Samples of antializing) and `REFLECT_DEPTH` (calculate times of ray reflecting) in [`minirt_const.h`](./includes/minirt_const.h) to minimize rendering.
+> 🚨 Last Example (Chapter 13) renders 125 spheres, so it will take few hours to render.
+
+> 🚀 If you want fast rendering, fix `PTHREAD_CNT` (Numbers of threads to render), `ANTI_SAMPLES` (Samples of antializing) and `REFLECT_DEPTH` (calculate times of ray reflecting) in [`minirt_const.h`](./includes/minirt_const.h) to optimize rendering time.

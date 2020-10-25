@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:55:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/23 14:34:51 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/25 12:04:56 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void				*render(void *arg)
 	int				y;
 	int				locate;
 	t_vec			*color;
-	t_hitlst_info	*info;
 	t_thread_info	*tinfo;
 
 	tinfo = (t_thread_info *)arg;
@@ -31,16 +30,13 @@ void				*render(void *arg)
 			color = vec_create(0, 0, 0);
 			locate = -1;
 			while ((++locate) < ANTI_SAMPLES)
-			{
-				info = get_hitlst_by_locate(x, y, tinfo->cam);
-				get_hittable_material_color(tinfo->lst, &info, color);
-			}
+				get_hittable_material_color(tinfo->lst,
+								get_hitlst_by_locate(x, y, tinfo->cam), color);
 			tinfo->cam->data->img[x][y] = get_color_sample_gamma(color);
 			free(color);
 		}
 		ft_printf("Finish render line %d\n", y);
 	}
-	ft_printf("Thread %d finish!\n", tinfo->tnum);
 	free(tinfo);
 	return (NULL);
 }

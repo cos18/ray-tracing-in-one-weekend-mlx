@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 04:55:05 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/23 13:31:15 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/25 12:05:19 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ t_vec				*get_recur_mat_color(t_list *lst, t_hitlst_info **info,
 }
 
 void				get_hittable_material_color(t_list *lst,
-												t_hitlst_info **info,
+												t_hitlst_info *info,
 												t_vec *color)
 {
 	t_vec			*target;
 	int				is_free;
 
 	is_free = FALSE;
-	target = get_recur_mat_color(lst, info, REFLECT_DEPTH, &is_free);
+	target = get_recur_mat_color(lst, &info, REFLECT_DEPTH, &is_free);
 	vec_add_apply(color, target);
 	free(target);
-	free_hitlst_info(*info, is_free);
+	free_hitlst_info(info, is_free);
 }
 
 void				draw_hittable_material(t_camera *cam, t_list *lst)
@@ -73,7 +73,6 @@ void				draw_hittable_material(t_camera *cam, t_list *lst)
 	int				y;
 	int				locate;
 	t_vec			*color;
-	t_hitlst_info	*lst_info;
 
 	y = cam->data->height;
 	while ((--y) >= 0)
@@ -84,13 +83,11 @@ void				draw_hittable_material(t_camera *cam, t_list *lst)
 			color = vec_create(0, 0, 0);
 			locate = -1;
 			while ((++locate) < ANTI_SAMPLES)
-			{
-				lst_info = get_hitlst_by_locate(x, y, cam);
-				get_hittable_material_color(lst, &lst_info, color);
-			}
+				get_hittable_material_color(lst,
+										get_hitlst_by_locate(x, y, cam), color);
 			cam->data->img[x][y] = get_color_sample_gamma(color);
 			free(color);
 		}
-		ft_printf("printing : %d / %d\n", cam->data->height - y, cam->data->height);
+		ft_printf("%d / %d\n", cam->data->height - y, cam->data->height);
 	}
 }

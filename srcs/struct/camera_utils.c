@@ -6,7 +6,7 @@
 /*   By: sunpark <sunpark@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 10:33:13 by sunpark           #+#    #+#             */
-/*   Updated: 2020/10/21 21:07:16 by sunpark          ###   ########.fr       */
+/*   Updated: 2020/10/25 11:58:36 by sunpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ t_camera		*camera_locate_new(t_vec *lookfrom, t_vec *lookat,
 	view_h = 2.0 * tan(vfov / 2.0);
 	view_w = view_h * aspect_ratio;
 	result->horizontal = vec_unit_apply(vec_cross_apply(vup, lookat));
-	result->vertical = vec_mul_const_apply(vec_cross(lookat, result->horizontal), view_h);
+	result->vertical = vec_mul_const_apply(
+							vec_cross(lookat, result->horizontal), view_h);
 	vec_mul_const_apply(result->horizontal, view_w);
 	result->origin = lookfrom;
 	set_camera_llc(result, lookat);

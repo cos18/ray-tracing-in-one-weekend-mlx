@@ -9,6 +9,11 @@ Practice version of [miniRT](https://github.com/cos18/miniRT) that implement [Ra
 
 <br>
 
+## 📂 Related Repository
+- [ray-tracing-the-next-week-mlx](https://github.com/cos18/ray-tracing-the-next-week-mlx)
+
+<br>
+
 ## 🛠 Development Environment
 
 - macOS 10.14+
